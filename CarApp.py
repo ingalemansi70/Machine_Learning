@@ -35,3 +35,9 @@ with col3:
     transmission = st.selectbox("Transmission", ["Manual", "Automatic", "Semi-Auto"])
 with col4:
     fuel_type = st.selectbox("Fuel Type", ["Petrol", "Diesel", "Hybrid", "Electric"])
+
+
+# Q7.
+st.subheader("🏷️ Model Info")
+car_model = st.text_input("Car Model Name", placeholder="e.g. Ford Fiesta")
+predict_btn = st.button("Predict Price")
