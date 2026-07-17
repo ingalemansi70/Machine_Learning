@@ -11,3 +11,7 @@ st.set_page_config(
     page_title="Ford Car Price Predictor",
     layout="centered"
 )
+# Q4.
+st.title("🚗 Ford Car Price Predictor")
+st.write("Enter the car details below to predict its selling price.")
+st.divider()
