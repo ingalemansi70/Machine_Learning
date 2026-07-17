@@ -41,3 +41,38 @@ with col4:
 st.subheader("🏷️ Model Info")
 car_model = st.text_input("Car Model Name", placeholder="e.g. Ford Fiesta")
 predict_btn = st.button("Predict Price")
+# Q8.
+# Q9.
+# Q10.
+if predict_btn:
+    try:
+        if car_model.strip() == "":
+            st.warning("Please enter a Car Model Name")
+        else:
+            input_data = {
+                'year': year,
+                'mileage': mileage,
+                'tax': tax,
+                'mpg': mpg,
+                'engineSize': engine_size,
+                'transmission': transmission,
+                'fuelType': fuel_type,
+                'model': car_model
+            }
+            input_df = pd.DataFrame([input_data])
+            input_df_encoded = pd.get_dummies(input_df)
+            input_df_encoded = input_df_encoded.reindex(columns=encoded_columns, fill_value=0)
+
+            num_cols = ['year', 'mileage', 'tax', 'mpg', 'engineSize']
+            existing_num_cols = [col for col in num_cols if col in input_df_encoded.columns]
+            input_df_encoded[existing_num_cols] = scaler.transform(input_df_encoded[existing_num_cols])
+
+            prediction = model.predict(input_df_encoded)
+            predicted_price = prediction[0]
+
+            st.divider()
+            st.metric(label="Estimated Selling Price", value=f"{predicted_price*100:,.2f}Rs.")
+            st.info(f"Prediction for: {car_model} | Year: {year}")
+
+    except Exception as e:
+        st.error(f"Prediction Error: {e}")
