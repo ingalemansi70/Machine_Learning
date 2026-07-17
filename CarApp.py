@@ -26,3 +26,12 @@ with col1:
 with col2:
     mpg = st.number_input("MPG", min_value=5.0, max_value=100.0, value=45.0, step=0.1)
     engine_size = st.number_input("Engine Size", min_value=0.5, max_value=6.0, value=1.5, step=0.1)
+
+
+# Q6.
+st.subheader("⚙️ Categorical Inputs")
+col3, col4 = st.columns(2)
+with col3:
+    transmission = st.selectbox("Transmission", ["Manual", "Automatic", "Semi-Auto"])
+with col4:
+    fuel_type = st.selectbox("Fuel Type", ["Petrol", "Diesel", "Hybrid", "Electric"])
