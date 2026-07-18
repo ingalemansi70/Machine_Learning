@@ -71,7 +71,7 @@ if predict_btn:
             predicted_price = prediction[0]
 
             st.divider()
-            st.metric(label="Estimated Selling Price", value=f"{predicted_price*100:,.2f}Rs.")
+            st.metric(label="Estimated Selling Price", value=f"{predicted_price:,.2f}Pounds.")
             st.info(f"Prediction for: {car_model} | Year: {year}")
 
     except Exception as e:
