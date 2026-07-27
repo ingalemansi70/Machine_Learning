@@ -3,9 +3,9 @@ import pandas as pd
 import joblib
 
 # Q8. LOAD SAVED OBJECTS
-model = joblib.load("heart_model.pkl")
-scaler = joblib.load("scaler.pkl")
-columns = joblib.load("columns.pkl")
+model = joblib.load("heart_model.joblib")
+scaler = joblib.load("heart_scaler.joblib")
+columns = joblib.load("heart_columns.joblib")
 
 st.title("Heart Disease Prediction")
 

@@ -43,7 +43,6 @@ with col4:
         "Master's", "Bachelor's", "Associate's", "Bootcamp/Self-taught", "PhD"
     ])
 
-# For skills: take top 15 most common ones so dropdown isn't 1500 long
 st.subheader("🛠️ Skills")
 required_skills = st.text_input(
     "Required Skills",
@@ -59,7 +58,6 @@ if predict_btn:
         if required_skills.strip() == "":
             st.warning("Please enter at least 1 skill separated by |")
         else:
-            # 1. Create input dict with same column names as training
             input_data = {
                 'years_of_experience': years_of_experience,
                 'is_senior': is_senior,
@@ -70,10 +68,8 @@ if predict_btn:
 
             input_df = pd.DataFrame([input_data])
 
-            # 2. One Hot Encode same way as training
+            # 2. One Hot Encoding
             input_df_encoded = pd.get_dummies(input_df)
-
-            # 3. Align columns with training columns. Fill missing with 0
             input_df_encoded = input_df_encoded.reindex(columns=encoded_columns, fill_value=0)
 
             # 4. Scale numerical columns
@@ -86,13 +82,14 @@ if predict_btn:
 
             predicted_annual = prediction[0]
             predicted_min = prediction[1]
-            predicted_max = prediction[2]
+            predicted_max = prediction[2]                          
 
             st.divider()
             st.subheader("💰 Predicted Salary Range")
 
             col_a, col_b, col_c = st.columns(3)
             with col_a:
+                
                 st.metric("Annual Salary", f"${predicted_annual:,.0f}")
             with col_b:
                 st.metric("Min Salary", f"${predicted_min:,.0f}")
